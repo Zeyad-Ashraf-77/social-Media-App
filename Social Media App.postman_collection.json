@@ -1,0 +1,806 @@
+{
+	"info": {
+		"_postman_id": "8d5d5da3-7dac-48b6-a219-f60a09068547",
+		"name": "Social Media App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40304579"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Zeyad Ashraf\",\r\n    \"email\": \"zeyadalta5ntawy@gmail.com\",\r\n    \"password\": \"Zeyad@123\",\r\n    \"cPassword\": \"Zeyad@123\",\r\n    \"age\": 22,\r\n    \"gender\": \"male\",\r\n    \"phone\": \"01065767412\",\r\n    \"address\": \"Elmahala\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/signUp",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									" const {accessToken,refreshToken}=pm.response.json();\r",
+									"pm.environment.set(\"accessToken\", accessToken);\r",
+									"pm.environment.set(\"refreshToken\", refreshToken);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"email\":\"zeyadalta56ntawy@gmail.com\",\r\n    // \"email\": \"zeyadalta565ntawy@gmail.com\",\r\n    \"email\":\"zeyadalta5ntawy@gmail.com\",\r\n    \"password\": \"Zeyad@123\"\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/signIn",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"signIn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignIn Google",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idToken\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/signInWithGoogle",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"signInWithGoogle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log Out",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZWJjNzg4NGZlZTVlZDc3MDYxMTdmMyIsImVtYWlsIjoiemV5YWRhbHRhbnRhd3kzNjVAZ21haWwuY29tIiwiaWF0IjoxNzYwNDYwMjQ0LCJleHAiOjE3NjA0NjM4NDQsImp0aSI6ImJjM2FmYzU0LTk5NTUtNDUyNi05MmFhLTYyYWJmNTJmMWE0OSJ9.aIXZqZiHza5Ppbn6ukCMfDiDhSdPzbMoTXjyo0siiE8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flag\": \"all\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/logOut",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"logOut"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "confirm email",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"zeyadaltantawy365@gmail.com\",\r\n    \"otp\": \"941261\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/confirmEmail",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"confirmEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget Password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"zeyadaltantawy365@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/forgetPassword",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"forgetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resat Password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"zeyadaltantawy365@gmail.com\",\r\n    \"password\":\"Zeyad2025%A\",\r\n    \"cPassword\":\"Zeyad2025%A\",\r\n    \"otp\":\"596376\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/resetPassword",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"resetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Role",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix_admin}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\":\"superAdmin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/changeRole/68f708534958cc3d516c3779",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"changeRole",
+								"68f708534958cc3d516c3779"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/users/profile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZWJjNzg4NGZlZTVlZDc3MDYxMTdmMyIsImVtYWlsIjoiemV5YWRhbHRhbnRhd3kzNjVAZ21haWwuY29tIiwiaWF0IjoxNzYwNDYxNTI1LCJleHAiOjE3NjEwNjYzMjUsImp0aSI6ImE2N2I3NTRlLWVhZWItNGI0NS1hNTEyLWFmODE1NmM0ZTgzZiJ9.h1FtmBNYNCkcTznvpXO5YDKzO9EUwtbZxtbo7FwBTq4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/users/refreshToken",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"refreshToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DashBoard",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix_admin}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/users/dashBoard",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"dashBoard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Friend",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/users/sendFriendRequest/68f708574958cc3d516c377c",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"sendFriendRequest",
+								"68f708574958cc3d516c377c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accept Add",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/users/acceptFriendRequest/690df00fef3aa1b83c420b4d",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"acceptFriendRequest",
+								"690df00fef3aa1b83c420b4d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile Image",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attachment",
+									"type": "file",
+									"src": "/C:/Users/Zeyad/Downloads/Motherboard map.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/users/profileImage",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"profileImage"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attachments",
+									"type": "file",
+									"src": [
+										"/C:/Users/Zeyad/Downloads/35abe5c5-811d-4964-b2f7-db0ea2bc69a4.jpg",
+										"/C:/Users/Zeyad/Downloads/0663361f-009f-4ab0-91cc-f724efe8eaa9.jpeg"
+									]
+								},
+								{
+									"key": "content",
+									"value": "sddddddddddddddddd",
+									"type": "text"
+								},
+								{
+									"key": "tags[0]",
+									"value": "68f708474958cc3d516c3776",
+									"type": "text"
+								},
+								{
+									"key": "tags[1]",
+									"value": "68f6f14cd5ee16cad5765caa",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/posts/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like&UnLike",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/posts/68f7097d4958cc3d516c3788?action=like",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								"68f7097d4958cc3d516c3788"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "like"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attachments",
+									"value": "",
+									"type": "file",
+									"disabled": true
+								},
+								{
+									"key": "content",
+									"value": "jhvmvjbljklh",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "allawComment",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availability",
+									"value": "private",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/posts/update/68f7097d4958cc3d516c3788",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								"update",
+								"68f7097d4958cc3d516c3788"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"value": "firest comment",
+									"type": "text"
+								},
+								{
+									"key": "attachments",
+									"type": "file",
+									"src": "/C:/Users/Zeyad/Downloads/06b9534a-f9b8-4d72-ad63-9a04169eed4b.jpeg"
+								},
+								{
+									"key": "tags[0]",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/posts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Create comment & Reply",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"value": "firest comment 6",
+									"type": "text"
+								},
+								{
+									"key": "attachments",
+									"type": "file",
+									"src": "/C:/Users/Zeyad/Downloads/35abe5c5-811d-4964-b2f7-db0ea2bc69a4.jpg"
+								},
+								{
+									"key": "tags[0]",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "onModel",
+									"value": "comment",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/posts/68f6f130d5ee16cad5765ca7/comment/6900c70ae7c6c5f3d96acc59/reply",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								"68f6f130d5ee16cad5765ca7",
+								"comment",
+								"6900c70ae7c6c5f3d96acc59",
+								"reply"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chats",
+			"item": [
+				{
+					"name": "Get Chat",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/users/68f708574958cc3d516c377c/chat",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"68f708574958cc3d516c377c",
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Group Chat",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attachment",
+									"type": "file",
+									"src": "/C:/Users/Zeyad/Downloads/Marvel's Spider-Man HD Spider Symbol Wallpaper.jpeg"
+								},
+								{
+									"key": "participants[0]",
+									"value": "68f708534958cc3d516c3779",
+									"type": "text"
+								},
+								{
+									"key": "groupName",
+									"value": "Frindes",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/chat/groupChat",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"chat",
+								"groupChat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Chat Group",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{prefix}} {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/chat/groupChats/690e4846b8e4bcbbe87a424d",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"chat",
+								"groupChats",
+								"690e4846b8e4bcbbe87a424d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": ""
+		}
+	]
+}
